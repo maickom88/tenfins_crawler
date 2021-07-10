@@ -145,12 +145,6 @@ def get216(driver):
     time.sleep(3)
     driver = page_down(driver)
     time.sleep(3)
-    driver = page_down(driver)
-    time.sleep(3)
-    driver = page_down(driver)
-    time.sleep(3)
-    driver = page_down(driver)
-    time.sleep(3)
     return driver
 
 
