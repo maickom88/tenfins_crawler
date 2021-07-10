@@ -18,14 +18,14 @@ def getEvents(placeId: str, force: CrawlerForce = CrawlerForce.MINIMUM):
         url=f'https://www.bandsintown.com/?place_id={placeId}')
     result = crawler.getEvents(force)
     events = [event.dict() for event in result]
-    list_details = []
+    # list_details = []
     with open('events.json', 'w') as json_file:
         json.dump(events, json_file)
-    for event in result:
-        details = getDetailsEvent(url=InputDetailsModel(url=event.url))
-        list_details.append(details.dict())
-    with open('details.json', 'w') as json_file:
-        json.dump(list_details, json_file)
+    # for event in result:
+    #     details = getDetailsEvent(url=InputDetailsModel(url=event.url))
+    #     list_details.append(details.dict())
+    # with open('details.json', 'w') as json_file:
+    #     json.dump(list_details, json_file)
     return result
 
 
