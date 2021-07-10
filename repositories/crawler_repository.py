@@ -1,4 +1,5 @@
 import logging
+import os
 from models.event_details_model import EventDetailsModel
 from models.event_model import EventModel
 from enums.crawler_force import CrawlerForce
@@ -114,16 +115,29 @@ class CrawlerRepository:
             driver.quit()
 
 
+# def configure_set_up_driver() -> WebDriver:
+#     chrome_options = webdriver.ChromeOptions()
+#     chrome_options.add_argument('--headless')
+#     chrome_options.add_argument('--disable-gpu')
+#     chrome_options.add_argument('window-size=1920x1080')
+#     chrome_options.add_argument('--disable-dev-shm-usage')
+#     chrome_options.add_argument('--no-sandbox')
+#     return webdriver.Chrome(
+#         ChromeDriverManager().install(), options=chrome_options)
+
+#for production
 def configure_set_up_driver() -> WebDriver:
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('window-size=1920x1080')
+    chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--no-sandbox')
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     return webdriver.Chrome(
-        ChromeDriverManager().install(), options=chrome_options)
-
+        executable_path=os.environ.get("CHROMEDRIVER_PATH"),
+        options=chrome_options
+    )
 
 def get216(driver):
     time.sleep(3)
