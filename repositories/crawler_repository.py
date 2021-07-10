@@ -25,10 +25,7 @@ class CrawlerRepository:
                 driver = get216(driver)
             if(force == CrawlerForce.MEDIUM):
                 driver = get216(driver)
-                driver = get216(driver)
             if(force == CrawlerForce.MAX):
-                driver = get216(driver)
-                driver = get216(driver)
                 driver = get216(driver)
 
             events = driver.find_elements_by_class_name(
@@ -140,11 +137,10 @@ def configure_set_up_driver() -> WebDriver:
     )
 
 def get216(driver):
-    time.sleep(3)
     driver = page_down(driver)
-    time.sleep(3)
+    time.sleep(1)
     driver = page_down(driver)
-    time.sleep(3)
+    time.sleep(1)
     return driver
 
 
